@@ -1,0 +1,148 @@
+.loginContainer {
+  display: flex;
+  height: 100vh;
+
+  .bannerBlock {
+    padding: 15px;
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    &::before {
+      content: "";
+      display: block;
+      background-color: #1266ac;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+    }
+
+    h1 {
+      position: absolute;
+      font-size: 40px;
+      color: #fff;
+      text-align: center;
+      z-index: 1;
+
+      span {
+        &::before {
+          content: "";
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .formBlock {
+    padding: 15px;
+    width: 50%;
+    position: relative;
+
+    .language {
+      display: flex;
+      justify-content: flex-end;
+
+      li {
+        border: 1px solid #34495e;
+        width: 30px;
+        height: 30px;
+        margin: 0 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+
+        a {
+          text-decoration: none;
+          color: #34495e;
+          outline: none;
+        }
+      }
+    }
+
+    .inputGroup {
+      width: 450px;
+      margin: 5% auto 0;
+
+      .logo {
+        text-align: center;
+        margin: 0 auto 15px auto;
+        img {
+          width: 150px;
+        }
+      }
+
+      form {
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        select {
+          width: 450px;
+          height: 35px;
+          padding: 8px 30px 8px 10px;
+          margin-bottom: 2em;
+          border-radius: 5px;
+          border: 1px solid #d5dbe4;
+          color: #333;
+          outline: none;
+
+          &:focus {
+            border: 1px solid #1266ac;
+          }
+        }
+        .errors {
+          color: orangered;
+          font-size: 12px;
+        }
+        input {
+          width: 450px;
+          height: 35px;
+          margin-bottom: 2em;
+          border-radius: 5px;
+          border: 1px solid #d5dbe4;
+          color: #333;
+          outline: none;
+          padding-left: 12px;
+          &:focus {
+            border: 1px solid #1266ac;
+          }
+        }
+      }
+
+      .rememberBlock {
+        display: flex;
+        cursor: pointer;
+
+        input {
+          margin-right: 10px;
+        }
+      }
+
+      .btn {
+        width: 100%;
+        background-color: #105895;
+        margin-top: 20%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 9px 10px;
+        text-align: center;
+        border-radius: 5px;
+        height: 40px;
+        color: #fff;
+        font-size: 1em;
+      }
+    }
+  }
+}

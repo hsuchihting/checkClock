@@ -1,0 +1,66 @@
+.logo {
+  padding: 15px;
+  text-align: center;
+  img {
+    width: 80px;
+    fill: #b5e1ff;
+  }
+}
+
+.user {
+  margin-bottom: 50px;
+  svg {
+    color: #1266ac;
+    margin-top: 20%;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: #d5dbe4;
+    border-radius: 100px;
+  }
+  .name {
+    color: #d5dbe4;
+  }
+}
+
+.menu {
+  &.highlight{
+    color: #1266ac;
+    border-radius: 20px 0 0 20px;
+    background-color: #eceff1;
+  }
+  a {
+    color: #eceff1;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    &:hover {
+      color: #1266ac;
+      border-radius: 20px 0 0 20px;
+      background-color: #eceff1;
+    }
+
+    svg {
+      margin-right: 5px;
+    }
+  }
+}
+
+.logout {
+  display: block;
+  width: 100%;
+  margin-top: 100%;
+
+  li {
+    padding: 15px;
+
+    a {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      svg {
+        margin-right: 5px;
+      }
+    }
+  }
+}
