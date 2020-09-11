@@ -13,7 +13,7 @@ export class resCompany {
 export class resDataIndex {
   Data = [
     {
-      CompanyName:
+      CompanyName: '',
       CompanySeq: 1,
     },
     {
