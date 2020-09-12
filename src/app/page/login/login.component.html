@@ -24,7 +24,7 @@
           <select class="selectControl" formControlName="company"
             [ngClass]="{ 'errors': submitted && f.company.errors }">
             <option value="0" disabled>請選擇公司</option>
-            <option *ngFor="let item of list;" [value]="item.CompanySeq === 1">
+            <option *ngFor="let item of list;" [value]="item.CompanySeq">
               {{ item.CompanyName}}</option>
           </select>
         </label>
