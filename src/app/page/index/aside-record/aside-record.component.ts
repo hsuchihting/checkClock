@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpPostService, ApiRes } from 'src/app/service/http-post.service';
+import { HttpPostService } from 'src/app/service/http-post.service';
 
 
 @Component({
@@ -15,9 +15,9 @@ export class AsideRecordComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.httpPostService.fetchApi().subscribe((res: ApiRes[]) => {
-      console.log('res', res)
-    })
+    // this.httpPostService.fetchApi().subscribe((res: ApiRes[]) => {
+    //   console.log('res', res)
+    // })
   }
 }
 

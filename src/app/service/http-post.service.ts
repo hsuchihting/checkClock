@@ -13,7 +13,7 @@ export class resCompany {
 export class resDataIndex {
   Data = [
     {
-      CompanyName: '',
+      CompanyName: '東捷資訊(ITTS)',
       CompanySeq: 1,
     },
     {
@@ -47,10 +47,10 @@ export class HttpPostService {
   //   );
   // }
 
-  getCompany(): Observable<ApiRes[]> {
+  getCompany(): Observable<resDataIndex[]> {
     const url = environment.companyUrl;
     return this.http.get(url).pipe(
-      map((res: ApiRes[]) => {
+      map((res: resDataIndex[]) => {
         return res;
         console.log(res);
       })

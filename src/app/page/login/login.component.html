@@ -1,5 +1,5 @@
 <div class="loginContainer">
-  <div class="bannerBlock" [style.background]="'url(/assets/login.jpg)'">
+  <div class="bannerBlock">
     <h1>
       <span>Attendance Time Clock</span>
     </h1>
@@ -19,53 +19,45 @@
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <label>
-          <select
-            formControlName="company"
-            [ngClass]="{ 'errors': submitted && f.company.errors }"
-          >
+          <select id="select" *ngFor="let item of list" formControlName="company" [ngClass]="{ 'errors': submitted && f.company.errors }">
             <option value="0" disabled>請選擇公司</option>
-            <option value="1">選項 1</option>
-            <option value="2">選項 2</option>
-            <option value="3">選項 3</option>
+            <option value="1">{{item}}</option>
+
           </select>
         </label>
-
-
-        <div class="errors" *ngIf="submitted && f.company.errors">
-          <div *ngIf="f.company.errors.required">請填寫帳號</div>
-        </div>
         <div>
-          <label>
-            <input
-              type="email"
-              formControlName="email"
-              [ngClass]="{ 'errors': f.email.errors }"
-              placeholder="Account"
-            />
-          </label>
-          <div class="errors" *ngIf="submitted && f.email.errors">
-            <div *ngIf="f.email.errors.required">請填寫帳號</div>
-            <div *ngIf="f.email.errors.email">email 格式錯誤</div>
+
+          <div class="errors" *ngIf="submitted && f.company.errors">
+            <div *ngIf="f.company.errors.required">請填寫帳號</div>
           </div>
+
+
+          <label>
+            <input type="email" formControlName="email" [ngClass]="{ 'errors': f.email.errors }"
+              placeholder="Account" />
+          </label>
+        </div>
+
+        <div class="errors" *ngIf="submitted && f.email.errors">
+          <div *ngIf="f.email.errors.required">請填寫帳號</div>
+          <div *ngIf="f.email.errors.email">email 格式錯誤</div>
         </div>
 
         <div>
           <label>
-            <input
-              type="password"
-              formControlName="password"
-              [ngClass]="{ 'errors': f.email.errors }"
-              placeholder="Password"
-            />
+            <input type="password" formControlName="password" [ngClass]="{ 'errors': f.email.errors }"
+              placeholder="Password" />
           </label>
-          <div class="errors" *ngIf="submitted && f.password.errors">
-            <div *ngIf="f.password.errors.required">請填寫帳號</div>
-            <div *ngIf="f.password.errors.minlength">請輸入超過6位數密碼</div>
-          </div>
+        </div>
+
+        <div class="errors" *ngIf="submitted && f.password.errors">
+          <div *ngIf="f.password.errors.required">請填寫帳號</div>
+          <div *ngIf="f.password.errors.minlength">請輸入超過6位數密碼</div>
         </div>
       </form>
+
       <div class="rememberBlock">
-        <label> <input type="checkbox"/>記住帳號 </label>
+        <label> <input type="checkbox" />記住帳號 </label>
       </div>
 
       <button class="btn" type="submit" [disabled]="loading">登入</button>

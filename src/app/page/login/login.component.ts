@@ -1,11 +1,15 @@
-import { User } from './../../_model/user';
-import { environment } from './../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from './../../_model/user';
+
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { HttpPostService, ApiRes } from 'src/app/service/http-post.service';
+import {
+  HttpPostService,
+  resDataIndex,
+} from 'src/app/service/http-post.service';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +22,7 @@ export class LoginComponent implements OnInit {
   email = true;
   password = true;
   submitted = false;
-
+  list: any;
   // User = {
   //   CompanySeq: 'string',
   //   Account: 'string',
@@ -31,11 +35,9 @@ export class LoginComponent implements OnInit {
     private httpPostService: HttpPostService,
     private router: Router
   ) {
-    this.http.post(`${environment.companyUrl}`, User).subscribe((data) => {
-      console.log(data);
+    this.http.post(`${environment.companyUrl}`, User).subscribe((res: resDataIndex[]) => {
+      console.log(res);
     });
-
-
   }
 
   ngOnInit(): void {
@@ -54,8 +56,10 @@ export class LoginComponent implements OnInit {
   onSubmit() {}
 
   getSelect() {
-    this.httpPostService.getCompany().subscribe((res: ApiRes[]) => {
+    this.httpPostService.getCompany().subscribe((res: resDataIndex[]) => {
       console.log(res);
+      this.list = resDataIndex;
+      console.log(this.list);
     });
   }
 }
