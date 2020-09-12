@@ -11,6 +11,13 @@ import {
 } from 'src/app/service/http-post.service';
 import { environment } from './../../../environments/environment';
 
+interface resData {
+  Code: number;
+  Data: Array<Object>;
+  Msg: string;
+  Success: boolean;
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,14 +41,25 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     private httpPostService: HttpPostService,
     private router: Router
-  ) {
-    this.http.post(`${environment.companyUrl}`, User).subscribe((res: resDataIndex[]) => {
-      console.log(res);
-    });
-  }
+  ) {}
+
+
 
   ngOnInit(): void {
+
+    this.http.post(`${environment.companyUrl}`, User).subscribe((res: resData) => {
+      console.log('res', res);
+      this.list = res.Data;
+    });
+
+    // this.httpPostService.getCompany().subscribe((res: resDataIndex[]) => {
+    //   console.log(res);
+    //   this.list = resDataIndex;
+    //   console.log(this.list);
+    // });
+
     this.form = this.formBuilder.group({
+      company: ['', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -53,7 +71,9 @@ export class LoginComponent implements OnInit {
   }
 
   // tslint:disable-next-line: typedef
-  onSubmit() {}
+  onSubmit() {
+    console.log( 'form', this.form )
+  }
 
   getSelect() {
     this.httpPostService.getCompany().subscribe((res: resDataIndex[]) => {

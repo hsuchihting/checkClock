@@ -31,6 +31,7 @@ export class resDataIndex {
   ];
 }
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -47,12 +48,13 @@ export class HttpPostService {
   //   );
   // }
 
-  getCompany(): Observable<resDataIndex[]> {
+  getCompany(): Observable<any> {
     const url = environment.companyUrl;
     return this.http.get(url).pipe(
-      map((res: resDataIndex[]) => {
+      map((res: any) => {
+        console.log('getCompany',res);
+
         return res;
-        console.log(res);
       })
     );
   }
