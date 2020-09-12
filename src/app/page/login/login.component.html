@@ -18,47 +18,59 @@
       </div>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <!-- 選單 -->
         <label>
-          <select id="select" formControlName="company" [ngClass]="{ 'errors': submitted && f.company.errors }">
+          <select class="selectControl" formControlName="company" [ngClass]="{ 'errors': submitted && f.company.errors }">
             <option value="0" disabled>請選擇公司</option>
-            <option *ngFor="let item of list" [value]="item.CompanySeq">{{ item.CompanyName }}</option>
+            <option *ngFor="let item of list" [value]="item.CompanySeq">{{ item.CompanyName}}</option>
           </select>
         </label>
-
+        <!-- 選單驗證訊息 -->
         <div>
-
           <div class="errors" *ngIf="submitted && f.company.errors">
             <div *ngIf="f.company.errors.required">請填寫帳號</div>
           </div>
+          <!-- 選單驗證結束 -->
 
-
+          <!-- 帳號 -->
           <label>
-            <input type="email" formControlName="email" [ngClass]="{ 'errors': f.email.errors }"
+            <input type="email" class="formControl" formControlName="email" [ngClass]="{ 'errors': f.email.errors }"
               placeholder="Account" />
           </label>
         </div>
-
+        <!-- 帳號驗證 -->
         <div class="errors" *ngIf="submitted && f.email.errors">
           <div *ngIf="f.email.errors.required">請填寫帳號</div>
           <div *ngIf="f.email.errors.email">email 格式錯誤</div>
         </div>
+        <!-- 帳號驗證結束 -->
 
+        <!-- 密碼 -->
         <div>
           <label>
-            <input type="password" formControlName="password" [ngClass]="{ 'errors': f.email.errors }"
+            <input type="password" class="formControl" formControlName="password" [ngClass]="{ 'errors': f.password.errors }"
               placeholder="Password" />
           </label>
         </div>
 
+        <!-- 密碼驗證-->
         <div class="errors" *ngIf="submitted && f.password.errors">
           <div *ngIf="f.password.errors.required">請填寫帳號</div>
           <div *ngIf="f.password.errors.minlength">請輸入超過6位數密碼</div>
         </div>
+        <!-- 密碼驗證結束 -->
+
+        <!-- 記住密碼 -->
         <div class="rememberBlock">
-          <label> <input type="checkbox" />記住帳號 </label>
+          <label> <input type="checkbox" />
+            <span> 記住帳號 </span>
+          </label>
         </div>
+        <!-- 登入按鈕 -->
         <button class="btn" type="submit" [disabled]="loading">登入</button>
       </form>
+      <!-- 表單結束 -->
     </div>
   </div>
   <!-- <pre>{{ form | json }}</pre> -->

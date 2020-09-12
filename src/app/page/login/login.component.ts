@@ -43,14 +43,13 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-
-
   ngOnInit(): void {
-
-    this.http.post(`${environment.companyUrl}`, User).subscribe((res: resData) => {
-      console.log('res', res);
-      this.list = res.Data;
-    });
+    this.http
+      .post(`${environment.companyUrl}`, User)
+      .subscribe((res: resData) => {
+        console.log('res', res);
+        this.list = res.Data;
+      });
 
     // this.httpPostService.getCompany().subscribe((res: resDataIndex[]) => {
     //   console.log(res);
@@ -72,7 +71,7 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   onSubmit() {
-    console.log( 'form', this.form )
+    console.log('form', this.form);
   }
 
   getSelect() {
