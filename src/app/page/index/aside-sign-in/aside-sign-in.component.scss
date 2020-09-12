@@ -44,11 +44,21 @@
       .clockIn {
         background-color: #1266ac;
         border-radius: 0 0 0 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >svg {
+          color: #fff;
+        }
       }
 
       .clockOut {
         background-color: #ccc;
         border-radius: 0 0 6px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         p {
           color: #666;
