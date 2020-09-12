@@ -21,9 +21,11 @@
 
         <!-- 選單 -->
         <label>
-          <select class="selectControl" formControlName="company" [ngClass]="{ 'errors': submitted && f.company.errors }">
+          <select class="selectControl" formControlName="company"
+            [ngClass]="{ 'errors': submitted && f.company.errors }">
             <option value="0" disabled>請選擇公司</option>
-            <option *ngFor="let item of list" [value]="item.CompanySeq">{{ item.CompanyName}}</option>
+            <option *ngFor="let item of list;" [value]="item.CompanySeq === 1">
+              {{ item.CompanyName}}</option>
           </select>
         </label>
         <!-- 選單驗證訊息 -->
@@ -49,8 +51,8 @@
         <!-- 密碼 -->
         <div>
           <label>
-            <input type="password" class="formControl" formControlName="password" [ngClass]="{ 'errors': f.password.errors }"
-              placeholder="Password" />
+            <input type="password" class="formControl" formControlName="password"
+              [ngClass]="{ 'errors': f.password.errors }" placeholder="Password" />
           </label>
         </div>
 

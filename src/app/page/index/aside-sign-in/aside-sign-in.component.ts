@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-aside-sign-in',
@@ -7,7 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsideSignInComponent implements OnInit {
   today = Date.now();
+
+  timeObservable$: Observable<any>;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.timeObservable$ = interval(1000);
+  }
+
+  clockIn() {
+    // 與後端時間接收格式
+    alert('OK');
+  }
+
+  clockOut() {
+    alert('errors');
+  }
 }

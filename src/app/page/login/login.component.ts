@@ -18,6 +18,14 @@ interface resData {
   Success: boolean;
 }
 
+interface backData {
+  Account: string;
+  UserName: string;
+  UserRole: number;
+  IsLeader: number;
+  TokenID: string;
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -72,10 +80,17 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line: typedef
   onSubmit() {
     console.log('form', this.form);
+    this.httpPostService.postAccount(User).subscribe((res) => {
+      if (res === 'success') {
+        console.log('success');
+      } else {
+        console.log('error');
+      }
+    });
   }
 
   getSelect() {
-    this.httpPostService.getCompany().subscribe((res: resDataIndex[]) => {
+    this.httpPostService.getCompany().subscribe((res: resDataIndex) => {
       console.log(res);
       this.list = resDataIndex;
       console.log(this.list);
