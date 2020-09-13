@@ -1,8 +1,9 @@
+import { User } from './../_model/user';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 export class resCompany {
   Code: number;
@@ -35,7 +36,7 @@ export class resDataIndex {
   providedIn: 'root',
 })
 export class HttpPostService {
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
   // fetchApi(): Observable<ApiRes[]> {
   //   const url =
@@ -57,15 +58,13 @@ export class HttpPostService {
     );
   }
 
-  postAccount(email, password): Observable<any> {
-    const userUrl = environment.loginUrl;
-    return this.http.post(userUrl).pipe(
+  postAccount(params: User): Observable<any> {
+    const url = environment.GetUserDataUrl;
+    return this.http.post(url, params).pipe(
       map((res: any) => {
         console.log('postAccount', res);
         return res;
       })
     );
-
-
   }
 }

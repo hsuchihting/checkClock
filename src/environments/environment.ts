@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   companyUrl: 'http://124.219.22.105/Function/GetCompanyList/',
   loginUrl: 'http://124.219.22.105/User/Login/',
-  logoutUrl: 'http://124.219.22.105/User/Login/',
+  logoutUrl: 'http://124.219.22.105/User/Logout',
   loginPageUrl: 'http://localhost:4200/login',
   addClockUrl: 'http://124.219.22.105/Clock/AddClock',
   getClockDataUrl: 'http://124.219.22.105/Clock/AddClock',

@@ -81,7 +81,7 @@
 
       .logo {
         text-align: center;
-        margin: 0 auto 15px auto;
+        margin: 0 auto 30px auto;
 
         img {
           width: 150px;
@@ -94,11 +94,16 @@
         flex-direction: column;
         text-align: center;
 
+        .select,
+        .inputControl {
+          margin-bottom: 35px;
+        }
+
         .selectControl {
           width: 450px;
           height: 35px;
           padding: 8px 30px 8px 10px;
-          margin-bottom: 2em;
+          // margin-bottom: 2em;
           border-radius: 5px;
           border: 1px solid #d5dbe4;
           color: #333;
@@ -113,7 +118,7 @@
         .formControl {
           width: 435px;
           height: 35px;
-          margin-bottom: 2em;
+          // margin-bottom: 2em;
           border-radius: 5px;
           border: 1px solid #d5dbe4;
           color: #333;
@@ -125,9 +130,14 @@
           }
         }
 
-        .errors {
-          color: orangered;
-          font-size: 12px;
+        .errors,
+        .fas {
+          color: #d44a4a;
+          font-size: 16px;
+          text-align: left;
+          padding: 10px 10px 0 0;
+
+
         }
 
         .rememberBlock {

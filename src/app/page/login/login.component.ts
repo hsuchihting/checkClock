@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { User } from './../../_model/user';
+import { resData, User } from './../../_model/user';
 
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -10,13 +10,6 @@ import {
   resDataIndex,
 } from 'src/app/service/http-post.service';
 import { environment } from './../../../environments/environment';
-
-interface resData {
-  Code: number;
-  Data: Array<Object>;
-  Msg: string;
-  Success: boolean;
-}
 
 interface backData {
   Account: string;
@@ -38,6 +31,7 @@ export class LoginComponent implements OnInit {
   password = true;
   submitted = false;
   list: any;
+  noValue = false;
   // User = {
   //   CompanySeq: 'string',
   //   Account: 'string',
@@ -52,6 +46,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // 取得 select 資料
     this.http
       .post(`${environment.companyUrl}`, User)
       .subscribe((res: resData) => {
@@ -59,14 +54,8 @@ export class LoginComponent implements OnInit {
         this.list = res.Data;
       });
 
-    // this.httpPostService.getCompany().subscribe((res: resDataIndex[]) => {
-    //   console.log(res);
-    //   this.list = resDataIndex;
-    //   console.log(this.list);
-    // });
-
     this.form = this.formBuilder.group({
-      company: ['', [Validators.required]],
+      company: ['1', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -80,8 +69,15 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line: typedef
   onSubmit() {
     console.log('form', this.form);
-    this.httpPostService.postAccount(User).subscribe((res) => {
-      if (res === 'success') {
+    // 取得表單資料
+    const userData: User = {
+      CompanySeq: this.form.get('company').value,
+      Account: this.form.get('email').value,
+      Password: this.form.get('password').value,
+    };
+
+    this.httpPostService.postAccount(userData).subscribe((res) => {
+      if (res.Success) {
         console.log('success');
       } else {
         console.log('error');

@@ -15,8 +15,10 @@
 
   <div class="settingSearch">
     <label>
-      <select>
-        <option value="1">東捷資訊服務</option>
+      <select class="selectControl" formControlName="company">
+        <option value="0" disabled>請選擇公司</option>
+        <option *ngFor="let item of list;" [value]="item.CompanySeq">
+          {{ item.CompanyName}}</option>
       </select>
     </label>
 
@@ -117,17 +119,17 @@
       </tr>
     </table>
   </div>
-
   <div class="searchBox" *ngIf="showBox">
-
     <div class="container">
       <h2>搜尋設定</h2>
       <div class="formGroup">
         <div>
           <label>
             <p>請選擇服務單位</p>
-            <select>
-              <option value="1">東捷資訊服務</option>
+            <select class="selectControl" formControlName="company">
+              <option value="0" disabled>請選擇公司</option>
+              <option *ngFor="let item of list;" [value]="item.CompanySeq">
+                {{ item.CompanyName}}</option>
             </select>
           </label>
         </div>
@@ -160,4 +162,6 @@
       </div>
     </div>
   </div>
+
+
 </div>
