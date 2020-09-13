@@ -57,9 +57,9 @@ export class HttpPostService {
     );
   }
 
-  postAccount(email, password): Observable<any> {
+  postAccount(params): Observable<any> {
     const userUrl = environment.loginUrl;
-    return this.http.post(userUrl).pipe(
+    return this.http.post(userUrl, params).pipe(
       map((res: any) => {
         console.log('postAccount', res);
         return res;

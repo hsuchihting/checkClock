@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
     // });
 
     this.form = this.formBuilder.group({
-      company: ['', [Validators.required]],
+      company: ['1', [Validators.required]],
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -79,9 +79,17 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   onSubmit() {
-    console.log('form', this.form);
-    this.httpPostService.postAccount(User).subscribe((res) => {
-      if (res === 'success') {
+
+    // get form value
+    const userData: User = {
+      CompanySeq: this.form.get('company').value,
+      Account: this.form.get('email').value,
+      Password: this.form.get('password').value
+    }
+
+    // post form value
+    this.httpPostService.postAccount(userData).subscribe((res) => {
+      if (res.Success) {
         console.log('success');
       } else {
         console.log('error');
@@ -89,11 +97,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getSelect() {
-    this.httpPostService.getCompany().subscribe((res: resDataIndex) => {
-      console.log(res);
-      this.list = resDataIndex;
-      console.log(this.list);
-    });
-  }
+  // getSelect() {
+  //   this.httpPostService.getCompany().subscribe((res: resDataIndex) => {
+  //     console.log(res);
+  //     this.list = resDataIndex;
+  //     console.log(this.list);
+  //   });
+  // }
 }
