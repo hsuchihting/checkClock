@@ -85,11 +85,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getSelect() {
-    this.httpPostService.getCompany().subscribe((res: resDataIndex) => {
-      console.log(res);
-      this.list = resDataIndex;
-      console.log(this.list);
-    });
-  }
+  // getSelect() {
+  //   this.httpPostService.getCompany().subscribe((res: resDataIndex) => {
+  //     console.log(res);
+  //     this.list = resDataIndex;
+  //     console.log(this.list);
+  //   });
+  // }
 }
