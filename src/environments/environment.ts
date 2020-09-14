@@ -9,7 +9,7 @@ export const environment = {
   logoutUrl: 'http://124.219.22.105/User/Logout',
   loginPageUrl: 'http://localhost:4200/login',
   addClockUrl: 'http://124.219.22.105/Clock/AddClock',
-  getClockDataUrl: 'http://124.219.22.105/Clock/AddClock',
+  getClockDataUrl: 'http://124.219.22.105/Clock/GetClockDayData',
   getServerTimeUrl: 'http://124.219.22.105/Function/GetServerTime',
   getReasonListUrl: 'http://124.219.22.105/Function/GetReasonList',
   GetUserDataUrl: 'http://124.219.22.105/SystemSetting/GetUserDataList',

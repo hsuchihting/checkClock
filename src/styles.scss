@@ -121,7 +121,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -132,10 +132,13 @@ table {
 
 body {
   box-sizing: border-box;
-  font-family: Helvetica, "蘋方-繁", "PingFang TC", "微軟正黑體", "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, "蘋方-繁", "PingFang TC", "微軟正黑體",
+    "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  height: 100%;
 }
 
-a{
+a {
   text-decoration: none;
   cursor: pointer;
 }

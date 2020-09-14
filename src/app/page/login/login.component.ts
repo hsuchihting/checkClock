@@ -3,12 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { resData, User } from './../../_model/user';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import {
-  HttpPostService,
-  resDataIndex,
-} from 'src/app/service/http-post.service';
+import { HttpPostService } from 'src/app/service/http-post.service';
 import { environment } from './../../../environments/environment';
 
 interface backData {
@@ -32,6 +29,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   list: any;
   noValue = false;
+  route: ActivatedRoute;
+
   // User = {
   //   CompanySeq: 'string',
   //   Account: 'string',
@@ -46,16 +45,16 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // 取得 select 資料
+    // 匯入公司資料
     this.http
-      .post(`${environment.companyUrl}`, User)
+      .post(environment.companyUrl, User)
       .subscribe((res: resData) => {
         console.log('res', res);
         this.list = res.Data;
       });
-
+    // 表單驗證
     this.form = this.formBuilder.group({
-      company: ['1', [Validators.required]],
+      company: ['1', [Validators.required]], // 預設公司選項為第一個
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
@@ -75,21 +74,20 @@ export class LoginComponent implements OnInit {
       Account: this.form.get('email').value,
       Password: this.form.get('password').value,
     };
+    this.submitted = true;
+    console.log(this.submitted);
 
-    this.httpPostService.postAccount(userData).subscribe((res) => {
-      if (res.Success) {
-        console.log('success');
+    this.httpPostService.login(userData).subscribe((res) => {
+      if (res.Code === 101) {
+        console.log(res.Code);
+        // const INDEX = 'http://localhost:4200/index';
+        this.router.navigate(['./index'], {
+          relativeTo: this.route,
+        });
       } else {
         console.log('error');
+        alert('登入失敗，帳號密碼錯誤');
       }
     });
   }
-
-  // getSelect() {
-  //   this.httpPostService.getCompany().subscribe((res: resDataIndex) => {
-  //     console.log(res);
-  //     this.list = resDataIndex;
-  //     console.log(this.list);
-  //   });
-  // }
 }

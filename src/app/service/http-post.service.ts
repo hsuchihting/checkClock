@@ -1,4 +1,4 @@
-import { User } from './../_model/user';
+import { addClock, User, getClockDayData, getServerTime } from './../_model/user';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -67,4 +67,45 @@ export class HttpPostService {
       })
     );
   }
+
+  login(params: User): Observable<any> {
+    const url = environment.loginUrl;
+    return this.http.post(url, params).pipe(
+      map((res: any) => {
+        console.log('login', res);
+        return res;
+      })
+    );
+  }
+
+  addClock(params: addClock): Observable<any> {
+    const url = environment.addClockUrl;
+    return this.http.post(url, params).pipe(
+      map((res: any) => {
+        console.log('addClock', res);
+        return res;
+      })
+    );
+  }
+
+  getClockDayData(params: getClockDayData): Observable<any> {
+    const url = environment.getClockDataUrl;
+    return this.http.post(url, params).pipe(
+      map((res: any) => {
+        console.log('getClockDayData', res);
+        return res;
+      })
+    );
+  }
+  getServerTime(params: getServerTime): Observable<any> {
+    const url = environment.getServerTimeUrl;
+    return this.http.post(url, params).pipe(
+      map((res: any) => {
+        console.log('getServerTime', res);
+        return res;
+      })
+    );
+  }
+
+
 }

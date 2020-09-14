@@ -6,11 +6,13 @@
   </div>
 
   <div class="formBlock">
-    <ul class="language">
-      <li><a href="#">繁</a></li>
-      <li><a href="#">简</a></li>
-      <li><a href="#">EN</a></li>
-    </ul>
+    <div>
+      <ul class="language">
+        <li><a href="#">繁</a></li>
+        <li><a href="#">简</a></li>
+        <li><a href="#">EN</a></li>
+      </ul>
+    </div>
 
     <div class="inputGroup">
       <div class="logo">
@@ -21,61 +23,76 @@
         <!-- 選單 -->
         <div class="select">
           <label>
-            <select class="selectControl" formControlName="company"
-              [ngClass]="{ 'errors': submitted && f.company.errors }">
+            <select
+              class="selectControl"
+              formControlName="company"
+              [ngClass]="{ 'errors': submitted && f.company.errors }"
+            >
               <option value="0" disabled>請選擇公司</option>
-              <option *ngFor="let item of list;" [value]="item.CompanySeq">
-                {{ item.CompanyName}}</option>
+              <option *ngFor="let item of list" [value]="item.CompanySeq">
+                {{ item.CompanyName }}
+              </option>
             </select>
             <!-- 選單驗證訊息 -->
             <p class="errors" *ngIf="f.company.errors">
-              <span *ngIf="f.company.errors.required"><i class="fas fa-exclamation-triangle"></i>請選擇公司</span>
+              <span *ngIf="f.company.errors.required"
+                ><i class="fas fa-exclamation-triangle"></i>請選擇公司</span
+              >
             </p>
             <!-- 選單驗證結束 -->
           </label>
         </div>
 
-
         <!-- 帳號 -->
         <div class="inputControl">
           <label>
-            <input type="email" class="formControl" formControlName="email"
-              [ngClass]="{ 'errors': submitted && f.email.errors }" placeholder="Account" />
+            <input
+              type="email"
+              class="formControl"
+              formControlName="email"
+              [ngClass]="{ 'errors': submitted && f.email.errors }"
+              placeholder="Account"
+            />
           </label>
           <!-- 帳號驗證 -->
-          <p class="errors" *ngIf="f.email.errors">
-            <span *ngIf="f.email.errors.required"><i class="fas fa-exclamation-triangle"></i>請填寫帳號</span>
+          <p class="errors" *ngIf="submitted && f.email.errors">
+            <span *ngIf="f.email.errors.required">
+              <i class="fas fa-exclamation-triangle"></i>請填寫帳號
+              </span>
           </p>
           <!-- 帳號驗證結束 -->
         </div>
 
-
-
         <!-- 密碼 -->
         <div class="inputControl">
           <label>
-            <input type="password" class="formControl" formControlName="password"
-              [ngClass]="{ 'errors':submitted && f.password.errors }" placeholder="Password" />
+            <input
+              type="password"
+              class="formControl"
+              formControlName="password"
+              [ngClass]="{ 'errors': submitted && f.password.errors }"
+              placeholder="Password"/>
           </label>
 
           <!-- 密碼驗證-->
-          <p class="errors" *ngIf="f.password.errors">
-            <span *ngIf="f.password.errors.required"><i class="fas fa-exclamation-triangle"></i>請填寫密碼</span>
+          <p class="errors" *ngIf="submitted && f.password.errors">
+            <span *ngIf="f.password.errors.required">
+              <i class="fas fa-exclamation-triangle"></i>請填寫密碼
+              </span>
             <span *ngIf="f.password.errors.minlength">請輸入超過6位數密碼</span>
           </p>
           <!-- 密碼驗證結束 -->
         </div>
 
-
-
         <!-- 記住密碼 -->
         <div class="rememberBlock">
-          <label> <input type="checkbox" [disabled]="noValue" />
+          <label>
+            <input type="checkbox" [disabled]="noValue" />
             <span> 記住帳號 </span>
           </label>
         </div>
         <!-- 登入按鈕 -->
-        <button class="btn" type="submit" [disabled]="loading">登入</button>
+        <button class="btn" type="submit" [disabled]="loading" s>登入</button>
       </form>
       <!-- 表單結束 -->
     </div>

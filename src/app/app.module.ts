@@ -17,7 +17,7 @@ import { AsideResignComponent } from './page/index/aside-resign/aside-resign.com
 import { AsideReportComponent } from './page/index/aside-report/aside-report.component';
 import { AsideSettingComponent } from './page/index/aside-setting/aside-setting.component';
 import { AsideNavComponent } from './component/aside-nav/aside-nav.component';
-import { AlertComponent } from './component/alert/alert.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -32,7 +32,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AsideReportComponent,
     AsideSettingComponent,
     AsideNavComponent,
-    AlertComponent,
   ],
   imports: [
     BrowserModule,

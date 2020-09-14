@@ -40,15 +40,21 @@
           color: #fff;
         }
       }
-
-      .clockIn {
-        background-color: #1266ac;
-        border-radius: 0 0 0 6px;
+      .clockIn,
+      .clockOut {
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
+      }
+      svg {
+        margin-right: 5px;
+      }
+      .clockIn {
+        background-color: #1266ac;
+        border-radius: 0 0 0 6px;
 
-        >svg {
+        > svg {
           color: #fff;
         }
       }
@@ -56,9 +62,6 @@
       .clockOut {
         background-color: #ccc;
         border-radius: 0 0 6px 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
         p {
           color: #666;

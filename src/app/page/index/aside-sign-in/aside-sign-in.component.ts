@@ -1,4 +1,8 @@
+import { addClock, getClockDayData, getServerTime } from './../../../_model/user';
+import { HttpPostService } from 'src/app/service/http-post.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-aside-sign-in',
@@ -7,22 +11,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsideSignInComponent implements OnInit {
   today: Date;
+  list: any;
+  Data: any;
 
   // timeObservable$: Observable<any>;
 
-  constructor() {}
-
+  constructor(
+    private http: HttpClient,
+    private httpPostService: HttpPostService
+  ) {}
+  // 時鐘
   ngOnInit(): void {
-    // this.timeObservable$ = interval(1000);
     this.today = new Date();
     setInterval(() => {
       this.today = new Date();
     }, 1000);
+
+    // 取得打卡時間
+    this.http
+      .post(environment.addClockUrl, addClock)
+      .subscribe((res: addClock) => {
+        console.log('res', res);
+        this.list = res.Data.ServerTime;
+      });
   }
 
   clockIn() {
-    // 與後端時間接收格式
-    alert('OK');
+    const getServerTime: getServerTime = {
+      serverTime: this.Data.post('Data.serverTime').value,
+    };
+    this.httpPostService.addClock(getServerTime).subscribe((res) => {
+      console.log(res.Data.ServerTime);
+    });
   }
 
   clockOut() {

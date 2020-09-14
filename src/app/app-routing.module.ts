@@ -9,7 +9,6 @@ import { AsideResignComponent } from './page/index/aside-resign/aside-resign.com
 import { AsideSettingComponent } from './page/index/aside-setting/aside-setting.component';
 import { AsideReportComponent } from './page/index/aside-report/aside-report.component';
 
-
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {

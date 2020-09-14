@@ -1,5 +1,5 @@
 import { environment } from './../../../environments/environment.prod';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -9,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AsideNavComponent implements OnInit {
   @Input() closePath: string;
+  route: ActivatedRoute;
 
   constructor(private router: Router) {}
   highlight = false;
@@ -20,7 +21,9 @@ export class AsideNavComponent implements OnInit {
 
   userClose() {
     if (this.closePath) {
-      this.router.navigate['http://localhost:4200/login'];
+      this.router.navigate(['./login'], {
+        relativeTo: this.route,
+      });
     }
   }
   ngOnInit(): void {}
