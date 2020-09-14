@@ -19,10 +19,10 @@ export class resData {
 // }
 
 export class addClock {
-  Code: number;
-  Success: boolean;
-  Msg: string;
-  Data: any;
+  TokenID: string;
+  ClockType: string;
+  AttendanceDatetime: string;
+  ReasonSeq: string;
 }
 
 export class getClockDayData {
