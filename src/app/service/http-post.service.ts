@@ -1,9 +1,12 @@
-import { addClock, User, getClockDayData, getServerTime } from './../_model/user';
+import { User } from './../_model/user';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { addClock } from '../_model/addClock';
+import { getClockDayData } from '../_model/getClockDayData';
+import { getServerTime } from '../_model/getServerTime';
 
 export class resCompany {
   Code: number;
@@ -38,16 +41,7 @@ export class resDataIndex {
 export class HttpPostService {
   constructor(public http: HttpClient) {}
 
-  // fetchApi(): Observable<ApiRes[]> {
-  //   const url =
-  //     'https://raw.githubusercontent.com/ag-grid/ag-grid/master/packages/ag-grid-docs/src/olympicWinners.json';
-  //   return this.http.get(url).pipe(
-  //     map((res: ApiRes[]) => {
-  //       return res;
-  //     })
-  //   );
-  // }
-
+  // 取得公司清單
   getCompany(): Observable<any> {
     const url = environment.companyUrl;
     return this.http.get(url).pipe(
@@ -58,6 +52,7 @@ export class HttpPostService {
     );
   }
 
+  // 傳送帳號密碼
   postAccount(params: User): Observable<any> {
     const url = environment.GetUserDataUrl;
     return this.http.post(url, params).pipe(
@@ -67,6 +62,8 @@ export class HttpPostService {
       })
     );
   }
+
+  // 登入
 
   login(params: User): Observable<any> {
     const url = environment.loginUrl;
@@ -78,6 +75,7 @@ export class HttpPostService {
     );
   }
 
+  // 新增打卡時間
   addClock(params: addClock): Observable<any> {
     const url = environment.addClockUrl;
     return this.http.post(url, params).pipe(
@@ -88,6 +86,18 @@ export class HttpPostService {
     );
   }
 
+  // 取得 server 時間
+  getServerTime(params: getServerTime): Observable<any> {
+    const url = environment.getServerTimeUrl;
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        console.log('getServerTime', res);
+        return res;
+      })
+    );
+  }
+
+  // 取得當日打卡資訊
   getClockDayData(params: getClockDayData): Observable<any> {
     const url = environment.getClockDataUrl;
     return this.http.post(url, params).pipe(
@@ -97,15 +107,4 @@ export class HttpPostService {
       })
     );
   }
-  getServerTime(params: getServerTime): Observable<any> {
-    const url = environment.getServerTimeUrl;
-    return this.http.post(url, params).pipe(
-      map((res: any) => {
-        console.log('getServerTime', res);
-        return res;
-      })
-    );
-  }
-
-
 }

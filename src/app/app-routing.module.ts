@@ -1,3 +1,6 @@
+import { AsideSettingUsersettingComponent } from './page/index/aside-setting/aside-setting-usersetting/aside-setting-usersetting.component';
+import { AsideSettingWorkdaysettingComponent } from './page/index/aside-setting/aside-setting-workdaysetting/aside-setting-workdaysetting.component';
+import { AsideSettingReasonableComponent } from './page/index/aside-setting/aside-setting-reasonable/aside-setting-reasonable.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -34,6 +37,20 @@ const routes: Routes = [
       {
         path: 'aside-setting',
         component: AsideSettingComponent,
+        children: [
+          {
+            path: 'aside-setting-reasonable',
+            component: AsideSettingReasonableComponent,
+          },
+          {
+            path: 'aside-setting-workdaysetting',
+            component: AsideSettingWorkdaysettingComponent,
+          },
+          {
+            path: 'aside-setting-usersetting',
+            component: AsideSettingUsersettingComponent,
+          },
+        ],
       },
     ],
   },

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { resData, User } from './../../_model/user';
+import { User } from './../../_model/user';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpPostService } from 'src/app/service/http-post.service';
 import { environment } from './../../../environments/environment';
+import { resData } from 'src/app/_model/resData';
 
 
 @Component({

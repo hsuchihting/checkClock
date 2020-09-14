@@ -1,13 +1,19 @@
-.asideBlock {
-  background-color: #1266ac;
-  padding-top: 20px;
-  border-radius: 0 20px 20px 0;
-  text-align: center;
-}
+.indexBlock {
+  display: flex;
+  height: 100%;
 
-.mainBlock {
-  width: calc(100% - 120px);
-  position: relative;
-  margin-left: 120px;
+  .asideBlock {
+    background-color: #1266ac;
+    padding-top: 20px;
+    border-radius: 0 20px 20px 0;
+    text-align: center;
+    height: 100vh;
+  }
 
+  .mainBlock {
+    width: calc(100% - 120px);
+    // position: relative;
+    margin-left: 120px;
+
+  }
 }
