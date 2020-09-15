@@ -1,24 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpPostService } from 'src/app/service/http-post.service';
-import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
 @Component({
   selector: 'app-aside-setting',
   templateUrl: './aside-setting.component.html',
   styleUrls: ['./aside-setting.component.scss'],
 })
 export class AsideSettingComponent implements OnInit {
+  // tslint:disable-next-line: member-ordering
+  @Output()
+  hidden = new EventEmitter<any>();
+
   active: boolean = false;
-  showBox = false;
   constructor(
-    private http: HttpClient,
-    private httpPostService: HttpPostService
   ) {}
 
   ngOnInit(): void {}
 
   reasonableBtn() {
     this.active = true;
-
   }
 
   workBtn() {
@@ -27,12 +26,9 @@ export class AsideSettingComponent implements OnInit {
 
   userSettingBtn() {
     this.active = true;
-
   }
 
   btnShowBox() {
-    this.showBox = true;
-
+    this.hidden.emit(this.hidden);
   }
 }
-

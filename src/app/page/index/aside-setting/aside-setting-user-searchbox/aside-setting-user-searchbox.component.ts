@@ -1,6 +1,6 @@
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { resData } from 'src/app/_model/resData';
 import { User } from 'src/app/_model/user';
 import { environment } from 'src/environments/environment';
@@ -12,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./aside-setting-user-searchbox.component.scss'],
 })
 export class AsideSettingUserSearchboxComponent implements OnInit {
-  hidden = true;
+  @Input()
+  hidden: boolean;
 
   list: any;
   account: string = '';
