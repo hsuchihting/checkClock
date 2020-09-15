@@ -1,18 +1,60 @@
 <div class="settingBlock">
   <div class="settingHeader">
     <div class="btnGroup">
-      <a routerLink="./aside-setting-reasonable" class="btn" (click)="reasonableBtn()" [class.reasonable]="active">
+      <a
+        routerLink="./aside-setting-reasonable"
+        class="btn"
+        (click)="reasonableBtn()"
+        [class.reasonable]="active"
+      >
         原因設定
       </a>
-      <a routerLink="./aside-setting-workdaysetting" class="btn" (click)="workBtn()" [class.work]="active">
+      <a
+        routerLink="./aside-setting-workdaysetting"
+        class="btn"
+        (click)="workBtn()"
+        [class.work]="active"
+      >
         上班日設定
       </a>
-      <a class="btn" routerLink="./aside-setting-usersetting" (click)="userSettingBtn()"
-        [class.userSetting]="active">
+      <a
+        class="btn"
+        routerLink="./aside-setting-usersetting"
+        (click)="userSettingBtn()"
+        [class.userSetting]="active"
+      >
         使用者設定
       </a>
     </div>
   </div>
-  <router-outlet></router-outlet>
 
+  <div class="settingSearch">
+    <label>
+      <select class="selectControl" formControlName="company">
+        <option value="0" disabled>請選擇公司</option>
+      </select>
+    </label>
+
+    <label>
+      <input type="text" placeholder="請輸入帳號" />
+    </label>
+
+    <label>
+      <input type="text" placeholder="請輸入姓名" />
+    </label>
+
+    <label>
+      <input type="email" placeholder="請輸入信箱" />
+    </label>
+
+    <label>
+      <select>
+        <option value="1">啟用</option>
+        <option value="2">停用</option>
+      </select>
+    </label>
+    <button class="searchBtn" (click)="btnShowBox()" >搜尋</button>
+  </div>
+  <router-outlet ></router-outlet>
+  <app-aside-setting-user-searchbox></app-aside-setting-user-searchbox>
 </div>

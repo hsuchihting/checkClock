@@ -22,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AsideSettingReasonableComponent } from './page/index/aside-setting/aside-setting-reasonable/aside-setting-reasonable.component';
 import { AsideSettingWorkdaysettingComponent } from './page/index/aside-setting/aside-setting-workdaysetting/aside-setting-workdaysetting.component';
 import { AsideSettingUsersettingComponent } from './page/index/aside-setting/aside-setting-usersetting/aside-setting-usersetting.component';
-import { AsideSettingUserSearchboxComponent } from './page/index/aside-setting/aside-setting-usersetting/aside-setting-user-searchbox/aside-setting-user-searchbox.component';
+import { AsideSettingUserSearchboxComponent } from './page/index/aside-setting/aside-setting-user-searchbox/aside-setting-user-searchbox.component';
+
 
 @NgModule({
   declarations: [
@@ -38,9 +39,7 @@ import { AsideSettingUserSearchboxComponent } from './page/index/aside-setting/a
     AsideNavComponent,
     AsideSettingReasonableComponent,
     AsideSettingWorkdaysettingComponent,
-
     AsideSettingUsersettingComponent,
-
     AsideSettingUserSearchboxComponent,
   ],
   imports: [

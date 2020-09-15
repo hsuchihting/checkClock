@@ -1,0 +1,46 @@
+<form [hidden]="hidden">
+  <div class="searchBox">
+    <div class="container">
+      <h2>搜尋設定</h2>
+      <div class="formGroup">
+        <div>
+          <label>
+            <p>請選擇服務單位</p>
+            <select class="selectControl" formControlName="company">
+              <option value="0" disabled>請選擇公司</option>
+              <option *ngFor="let item of list" [value]="item.CompanySeq">
+                {{ item.CompanyName }}
+              </option>
+            </select>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <p>請輸入帳號</p>
+            <input type="text" placeholder="請輸入帳號" class="formControl" />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <p>請輸入姓名</p>
+            <input type="text" placeholder="請輸入姓名" class="formControl" />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <p>請輸入信箱</p>
+            <input type="email" placeholder="請輸入信箱" />
+          </label>
+        </div>
+      </div>
+
+      <div class="btnGroup">
+        <button class="btn btn_access" (click)="accessBtn()">確定</button>
+        <button class="btn btn_cancel" (click)="closeBtn()">取消</button>
+      </div>
+    </div>
+  </div>
+</form>
